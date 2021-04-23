@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Profesores</h1>
     <div class="form-group">
-        <form [formGroup]= "formulario"  (ngSubmit)="agregar()"  >
+        <form [formGroup]= "formulario"  (ngSubmit)="addData()"  >
             <h3>Rut: </h3> <input type="text" formControlName= "rut" class="form-control" >
             <div *ngIf="rut?.invalid && (rut?.dirty || rut?.touched)" class="alert alert-danger">
                 <p *ngIf="rut?.errors?.required">Por favor ingresar un Rut</p>
@@ -68,7 +68,7 @@
                         <th >{{elemento.edad}}</th>
                         <th >{{elemento.especialidad}}</th>
                         <th >{{elemento.sueldo}}</th>
-                        <span><input type="submit" (click) =  "eliminar()" class="btn btn-danger" style="background-color: red; " value="Eliminar"></span>
+                        <span><input type="submit" (click) =  "eliminar(elemento.rut)" class="btn btn-danger" style="background-color: red; " value="Eliminar"></span>
                         <span><input type="submit" (click) =  "modificar()" class="btn btn-warning" style="background-color: yellow; " value="modificar"></span>
                         <span><input type="submit" (click) =  "guardarModificacion()" class="btn btn-success" style="background-color: green; " value="Guardar" disabled="disabled" id=""> </span>
                        

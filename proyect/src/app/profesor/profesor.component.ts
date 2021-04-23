@@ -42,13 +42,23 @@ export class ProfesorComponent implements OnInit {
   get sueldo() { return this.formulario.get('sueldo'); }
 
 
-  agregar(){
 
+
+  eliminar( index: string) {
+  
+    let codigoBorrar = 0;
+    let cont = 0 ;
+    for( let x of this.lista){
+      if (x.rut == index){
+        codigoBorrar = cont
+      } 
+      cont += 1;
+    }
+  
+    this.lista.splice(codigoBorrar,1); 
+   
   }
-
-  eliminar(){
-
-  }
+  
   modificar(){
 
   }
