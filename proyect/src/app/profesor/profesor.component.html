@@ -1,1 +1,85 @@
-<p>profesor works!</p>
+<div class="container">
+    <h1>Profesores</h1>
+    <div class="form-group">
+        <form [formGroup]= "formulario"  (ngSubmit)="agregar()"  >
+            <h3>Rut: </h3> <input type="text" formControlName= "rut" class="form-control" >
+            <div *ngIf="rut?.invalid && (rut?.dirty || rut?.touched)" class="alert alert-danger">
+                <p *ngIf="rut?.errors?.required">Por favor ingresar un Rut</p>
+                <p *ngIf="rut?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                <p *ngIf="rut?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+
+            </div>
+            <br>
+            <h3>Nombre: </h3> <input type="text" formControlName= "nombre" class="form-control" minlength="3" maxlength="50">
+            <div *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)" class="alert alert-danger">
+                <p *ngIf="nombre?.errors?.required">Por favor ingresar un Nombre</p>
+                <p *ngIf="nombre?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                <p *ngIf="nombre?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+            </div>
+            <br>
+            <h3>Apellido: </h3> <input type="text" formControlName= "apellido" class="form-control" minlength="3" maxlength="50">
+            <div *ngIf="apellido?.invalid && (apellido?.dirty || apellido?.touched)" class="alert alert-danger">
+                <p *ngIf="apellido?.errors?.required">Por favor ingresar un Apellido</p>
+                <p *ngIf="apellido?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                <p *ngIf="apellido?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+            </div>
+            <br>
+            <h3>Edad: </h3> <input type="number" formControlName= "edad" class="form-control " minlength="3" maxlength="50">
+            <div *ngIf="edad?.invalid && (edad?.dirty || edad?.touched)" class="alert alert-danger">
+                <p *ngIf="edad?.errors?.required">Por favor ingresar Edad</p>
+                <p *ngIf="edad?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                <p *ngIf="edad?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+            </div>
+            <br>
+            <h3>Especialidad: </h3> <input type="text" formControlName= "especialidad" class="form-control " minlength="3" maxlength="50">
+            <div *ngIf="especialidad?.invalid && (especialidad?.dirty || especialidad?.touched)" class="alert alert-danger">
+                <p *ngIf="especialidad?.errors?.required">Por favor ingresar una Especialidad</p>
+                <p *ngIf="especialidad?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                <p *ngIf="especialidad?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+            </div>
+            <br>
+            <h3>Sueldo: </h3> <input type="number" formControlName= "sueldo" class="form-control " minlength="3" maxlength="50">
+            <div *ngIf="sueldo?.invalid && (sueldo?.dirty || sueldo?.touched)" class="alert alert-danger">
+                <p *ngIf="sueldo?.errors?.required">Por favor ingresar un sueldo</p>
+                <p *ngIf="sueldo?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                <p *ngIf="sueldo?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <button type="submit " class="btn btn-success">Guardar</button>
+        </form>
+            <table class="table table-striped">
+                <thead>
+                    <tr >
+                        <th>Rut</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Especialidad</th>
+                        <th>Sueldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let elemento of lista">
+                        <th > {{elemento.rut}}</th>
+                        <th > {{elemento.nombre}} </th>
+                        <th >{{elemento.apellido}}</th>
+                        <th >{{elemento.edad}}</th>
+                        <th >{{elemento.especialidad}}</th>
+                        <th >{{elemento.sueldo}}</th>
+                        <span><input type="submit" (click) =  "eliminar()" class="btn btn-danger" style="background-color: red; " value="Eliminar"></span>
+                        <span><input type="submit" (click) =  "modificar()" class="btn btn-warning" style="background-color: yellow; " value="modificar"></span>
+                        <span><input type="submit" (click) =  "guardarModificacion()" class="btn btn-success" style="background-color: green; " value="Guardar" disabled="disabled" id=""> </span>
+                       
+                    </tr>
+                </tbody>
+                
+            </table>
+        
+        
+        </div>
+</div>
+
+
+

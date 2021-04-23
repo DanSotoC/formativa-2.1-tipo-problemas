@@ -7,39 +7,45 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./alumno.component.css']
 })
 export class AlumnoComponent{
-  datos: string = "";
+
   sala !: Sala;
-  formulario = new FormGroup({
-    id: new FormControl('', Validators.required),
-    name: new FormControl('',Validators.required),
-    apellido: new FormControl('',Validators.required),
-    rut: new FormControl('', Validators.required),
-    curso: new FormControl('',Validators.required),
-    edad: new FormControl('',Validators.required),
-    prom: new FormControl('',Validators.required),
+  formulario:FormGroup = new FormGroup({
+    name: new FormControl('',[ Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+    apellido: new FormControl('',[ Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+    rut: new FormControl('', [ Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+    curso: new FormControl('',[ Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+    edad: new FormControl('',[ Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+    prom: new FormControl('',[ Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
     
   });
-
+  get rut() { return this.formulario.get('rut'); };
+  get nombre() { return this.formulario.get('nombre'); };
+  get apellido() { return this.formulario.get('apellido'); };
+  get edad() { return this.formulario.get('edad'); };
+  get curso() { return this.formulario.get('curso'); };
+  get prom() { return this.formulario.get('prom'); }
+  
   metodo(){
-    if(this.formulario.value.code != "" && this.formulario.value.name != "" && this.formulario.value.price != ""&& this.formulario.value.description != ""){
-        this.datos = `    Id=${this.formulario.value.id}
-                          Nombre=${this.formulario.value.name}
-                          Apellido=${this.formulario.value.apellido}
-                          Rut=${this.formulario.value.rut}
-                          Curso=${this.formulario.value.curso}
-                          Edad=${this.formulario.value.edad}
-                          Promedio=${this.formulario.value.prom}
-                          `;
-        this.sala = new Sala(this.formulario.value.code,this.formulario.value.name,this.formulario.value.price,this.formulario.value.description);
+    if(this.formulario.value.name != "" && this.formulario.value.price != ""&& this.formulario.value.description != ""){
+          this.datos = `Nombre=${this.formulario.value.name}
+          Apellido=${this.formulario.value.apellido}
+          Rut=${this.formulario.value.rut}
+          Curso=${this.formulario.value.curso}
+          Edad=${this.formulario.value.edad}
+          Promedio=${this.formulario.value.prom}
+          `;
+        this.sala = new Sala(this.formulario.value.name, this.formulario.value.apellido, this.formulario.value.rut, this.formulario.value.curso, this.formulario.value.edad, this.formulario.value.prom);
     }
     else{
-          alert("Complete Todos los campos")
+          //alert("Falta un campo por rellenar")
     }
     
   }
+  
 }
 class Sala  {
-  constructor ( public code: number, public name: string, public price:number , public description : string) {
+  constructor (public name: string, public apellido:string , public rut : string , public curso : string, public edad : number, public prom : string) {
 
   }
+
 }
