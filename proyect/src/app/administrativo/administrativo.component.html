@@ -21,7 +21,7 @@
 
                 <td *ngIf="!editMode"><button class="btn btn-outline-secondary" ><i
                             class="bi bi-pencil-square"></i> {{id}}</button></td>
-                <td><button class="btn btn-outline-danger" click="deleteByPosition()" ><i class="bi bi-trash"></i>
+                <td><button class="btn btn-outline-danger" click="deleteByPosition(id)" ><i class="bi bi-trash"></i>
                         Borrar</button></td>
             </tr>
         </tbody>
@@ -31,7 +31,7 @@
     <br>
     <br>
 
-    <form class="form" [formGroup]="formulario"  (click)="addData()">
+    <form class="form" [formGroup]="formulario"  >
         <div class="form-group row">
             <label for="code" class="col-4 col-form-label">Rut</label>
             <div class="col-8">
@@ -91,8 +91,8 @@
         <div class="form-group row">
             <div class="col-4"></div>
             <div class="input-group col-8">
-                <button *ngIf="!editMode" type="button" class="btn btn-outline-success btn-block">Guardar</button>
-                <button *ngIf="editMode" type="button" class="btn btn-outline-success btn-blocky" >Guardar</button>
+                <button *ngIf="!editMode" type="button" class="btn btn-outline-success btn-block" (click)="addData()">Guardar</button>
+                <button *ngIf="editMode" type="button" class="btn btn-outline-success btn-blocky" (click)="addData()" >Guardar</button>
             </div>
         </div>
     </form>

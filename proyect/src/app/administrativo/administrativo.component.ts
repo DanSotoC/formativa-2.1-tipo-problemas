@@ -56,7 +56,7 @@ export class AdministrativoComponent implements OnInit {
     }
     else {
       if (this.formulario.valid) {
-              this.admin.push({
+        this.admin.push({
         "rut": this.formulario.controls["rut"].value,
         "name":this.formulario.controls["name"].value,
         "lastname": this.formulario.controls["lastname"].value,
@@ -88,14 +88,14 @@ export class AdministrativoComponent implements OnInit {
     return { result: false, productIndex: -1 };
   }
 
-  deleteByPosition(pos: string) :void{
-    const position = Number(pos);
-    if (this.admin[position]) {
-      delete this.admin[position];
-    }
-    
+  deleteByPosition(pos: number) :void{
+    if (this.admin[pos]) {
+      delete this.admin[pos];
+    } 
   }
-  
+
+
+
 
 }
 
@@ -114,5 +114,4 @@ class Persona{
     this.job = price;
     this.salary = code;
   }
-  
 }
