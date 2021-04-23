@@ -1,1 +1,100 @@
 <p>administrativo works!</p>
+<div class="container mt-4">
+    <p class="h5">Lista de Compra</p>
+    <table class="table table-striped my-2">
+        <thead>
+            <tr>
+                <th scope="col">Rut</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Sueldo</th>
+            </tr>
+        </thead>
+      <tbody>
+        <tr *ngFor="let item of admin;let id=index">
+                <td>{{item.rut}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.job}}</td>
+                <td>{{item.salary}}</td>
+
+                <td *ngIf="!editMode"><button class="btn btn-outline-secondary" ><i
+                            class="bi bi-pencil-square"></i> {{id}}</button></td>
+                <td><button class="btn btn-outline-danger" click="deleteByPosition(id)" ><i class="bi bi-trash"></i>
+                        Borrar</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <br>
+    <br>
+
+    <form class="form" [formGroup]="formulario"  >
+        <div class="form-group row">
+            <label for="code" class="col-4 col-form-label">Rut</label>
+            <div class="col-8">
+                <input type="text" name="code" class="form-control" formControlName="rut">
+                <div *ngIf="rut?.invalid && (rut?.dirty || rut?.touched)" class="alert alert-danger">
+                    <p *ngIf="rut?.errors?.required">Por favor ingrese un rut</p>
+                    <p *ngIf="rut?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                    <p *ngIf="rut?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="name" class="col-4 col-form-label">Nombre</label>
+            <div class="col-8">
+                <input type="text" name="name" class="form-control" formControlName="name">
+                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
+                    <p *ngIf="name?.errors?.required">Por favor ingrese un nombre</p>
+                    <p *ngIf="name?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                    <p *ngIf="name?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="price" class="col-4 col-form-label">Apellido</label>
+            <div class="col-8">
+                <input type="lastname" name="text" class="form-control" formControlName="lastname">
+                <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)" class="alert alert-danger">
+                    <p *ngIf="lastname?.errors?.required">Por favor ingresar un apellido</p>
+                    <p *ngIf="lastname?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                    <p *ngIf="lastname?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description" class="col-4 col-form-label">Posición</label>
+            <div class="col-8">
+                <input type="text" name="description" class="form-control" formControlName="job">
+                <div *ngIf="job?.invalid && (job?.dirty || job?.touched)" class="alert alert-danger">
+                    <p *ngIf="job?.errors?.required">Por favor ingresar un cargo de trabajo</p>
+                    <p *ngIf="job?.errors?.minlength">Debe tener mínimo 3 caracteres</p>
+                    <p *ngIf="job?.errors?.maxlength">Debe tener máximo 50 caracteres</p>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description" class="col-4 col-form-label">Sueldo</label>
+            <div class="col-8">
+                <input type="number" name="description" class="form-control" formControlName="salary">
+                <div *ngIf="salary?.invalid && (salary?.dirty || salary?.touched)" class="alert alert-danger">
+                    <p *ngIf="salary?.errors?.required">Por favor ingresar el salario</p>
+                    <p *ngIf="salary?.errors?.min">Ingresar un número mayor a cero</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4"></div>
+            <div class="input-group col-8">
+                <button *ngIf="!editMode" type="button" class="btn btn-outline-success btn-block" (click)="addData()">Guardar</button>
+                <button *ngIf="editMode" type="button" class="btn btn-outline-success btn-blocky" (click)="addData()" >Guardar</button>
+            </div>
+        </div>
+    </form>
+
+</div>
