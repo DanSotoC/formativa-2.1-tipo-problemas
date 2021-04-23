@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ProfesorComponent } from './profesor/profesor.component';
 import { AlumnoComponent } from './alumno/alumno.component';
 import { AdministrativoComponent } from './administrativo/administrativo.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AdministrativoComponent } from './administrativo/administrativo.compone
       BrowserModule,
       ReactiveFormsModule,
       FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
