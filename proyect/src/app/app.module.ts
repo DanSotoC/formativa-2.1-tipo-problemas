@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { ProfesorComponent } from './profesor/profesor.component';
@@ -14,7 +15,9 @@ import { AdministrativoComponent } from './administrativo/administrativo.compone
     AdministrativoComponent
   ],
   imports: [
-    BrowserModule
+      BrowserModule,
+      ReactiveFormsModule,
+      FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
